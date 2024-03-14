@@ -1,0 +1,182 @@
+/* Container for the cards */
+.flip-container {
+    perspective: 1000px;
+    width: calc(50% - 20px); /* Two cards side by side with spacing */
+    height: 100px; /* Fixed height for the cards */
+    margin: 10px; /* Spacing between cards */
+    perspective: 1000px; /* Perspective for flip animation */
+    display: inline-block; /* Display cards side by side */
+}
+
+/* Each card */
+.card {
+    width: 250px;
+    height: 170px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+    margin: 20px;
+}
+
+/* Front face of the card */
+.front,
+.back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+}
+
+/* Front face style */
+.front {
+    background-color: #3498db;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: futura;
+    font-size: 64px;
+    border: white solid 5px;
+    border-radius: 10px;
+}
+
+/* Back face style */
+.back {
+    background-color: #2ecc71;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotateY(180deg);
+    border: white solid 5px;
+    border-radius: 10px;
+}
+
+/* Hover effect */
+.card.isflipped {
+    transform: rotateY(180deg);
+}
+
+/* label {
+    position: absolute;
+    max-width: fit-content;
+} */
+
+/* Base styles for cards */
+.flip-container {
+    perspective: 1000px;
+}
+
+.card {
+    width: calc(50% - 20px); /* Two cards side by side with spacing */
+    height: 100px; /* Fixed height for the cards */
+    margin: 10px; /* Spacing between cards */
+    background-color: #f0f0f0; /* Background color for cards */
+    transition: width 0.3s; /* Transition effect for smooth expansion */
+    float: left; /* Float cards to the left for side-by-side layout */
+}
+
+/* Styles for expanded state */
+.card.expanded {
+    width: calc(100% - 20px); /* Expanded card takes full width */
+    height: 200px; /* Adjusted height for expanded state */
+    margin: 10px 0; /* Adjusted margin to remove spacing between expanded cards */
+}
+
+/* Front and back faces of the cards */
+.front,
+.back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+}
+
+/* Front face style */
+.front {
+    background-color: #3498db;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Back face style */
+.back {
+    background-color: #2ecc71;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotateY(180deg);
+}
+
+/* Hover effect for flipping */
+.card:hover .flip-container {
+    transform: rotateY(180deg);
+}
+
+/* Clear fix for the parent container */
+.abcBody::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* OTHER DELETE */
+
+.card {
+    width: calc(50% - 20px); /* Two cards side by side with spacing */
+    height: 100px; /* Fixed height for the cards */
+    margin: 10px; /* Spacing between cards */
+    background-color: #f0f0f0; /* Background color for cards */
+    transition: width 0.3s; /* Transition effect for smooth expansion */
+    float: left; /* Float cards to the left for side-by-side layout */
+}
+
+/* Styles for expanded state */
+.card.expanded {
+    width: calc(100% - 20px); /* Expanded card takes full width */
+    height: 200px; /* Adjusted height for expanded state */
+    margin: 10px 0; /* Adjusted margin to remove spacing between expanded cards */
+}
+
+/* Front and back faces of the cards */
+.front,
+.back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+}
+
+/* Front face style */
+.front {
+    background-color: #3498db;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Back face style */
+.back {
+    background-color: #2ecc71;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotateY(180deg);
+}
+
+/* Hover effect for flipping */
+.card:hover .flip-container {
+    transform: rotateY(180deg);
+}
+
+/* Clear fix for the parent container */
+.abcBody::after {
+    content: "";
+    display: table;
+    clear: both;
+}

@@ -1,0 +1,4 @@
+# url="https://ivrkttlvgtjqrxppnrvt.supabase.co"
+# api="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml2cmt0dGx2Z3RqcXJ4cHBucnZ0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTAxNjUzNzksImV4cCI6MjAyNTc0MTM3OX0.oQEi9eJZVNkdTwl4QvdTxkCg1ij4fwP7dShFntfvTYc"
+
+

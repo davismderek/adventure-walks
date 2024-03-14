@@ -1,0 +1,177 @@
+:root {
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+
+    color-scheme: light dark;
+    color: rgba(255, 255, 255, 0.87);
+    background-color: #242424;
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+    font-weight: 500;
+    color: #646cff;
+    text-decoration: inherit;
+}
+a:hover {
+    color: #535bf2;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    place-items: center;
+    min-width: 320px;
+    min-height: 100vh;
+}
+
+h1 {
+    font-size: 3.2em;
+    line-height: 1.1;
+}
+
+button {
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: #1a1a1a;
+    cursor: pointer;
+    transition: border-color 0.25s;
+}
+button:hover {
+    border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color;
+}
+
+.homeNavIcon {
+    margin: 15px;
+    position: fixed;
+    top: 0%;
+    right: 0%;
+}
+
+.homeHeaders {
+    text-align: center;
+}
+
+.flip-container {
+    width: calc(50% - 20px); /* Two cards side by side with spacing */
+    height: 100px;
+    margin: 10px;
+    perspective: 1000px;
+    display: inline-block;
+}
+
+.homeCardContainer {
+    display: flex;
+}
+
+.homeCard {
+    width: calc(50% - 20px);
+    height: 100px;
+    margin: 10px;
+    background-color: #5f6bee;
+    text-align: center;
+    line-height: 100px;
+    border-radius: 5px;
+}
+
+.p,
+.homeCard {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.card {
+    width: calc(100% - 20px); /* Two cards side by side with spacing */
+    height: 100px;
+    margin: 10px;
+    background-color: #f0f0f0;
+    transition: width 0.5s;
+    float: left;
+    transform-style: preserve-3d;
+}
+
+.card.expanded {
+    width: calc(200% - 20px);
+    height: 200px;
+    margin: 10px 0;
+}
+
+.front,
+.back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+}
+
+.front {
+    background-color: #3498db;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: futura;
+    font-size: 64px;
+    border: white solid 5px;
+    border-radius: 10px;
+}
+
+.back {
+    background-color: #2ecc71;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotateY(180deg);
+    border: white solid 5px;
+    border-radius: 10px;
+}
+
+.card.isflipped {
+    transform: rotateY(180deg);
+    width: calc(200% - 20px); /* Expanded card takes full width */
+    height: 200px; /* Adjusted height for expanded state */
+    margin: 10px 0;
+    position: absolute;
+    z-index: 10;
+}
+
+/* Clear fix for the parent container */
+.abcBody::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Media query for mobile screens */
+
+@media (prefers-color-scheme: light) {
+    :root {
+        color: #213547;
+        background-color: #ffffff;
+    }
+    a:hover {
+        color: #747bff;
+    }
+    button {
+        background-color: #f9f9f9;
+    }
+}
