@@ -34,6 +34,18 @@ h1 {
     font-size: 3.2em;
     line-height: 1.1;
 }
+.introText {
+    /* margin: 10px; */
+    margin: 0px 15px 0px;
+    font-size: 22px;
+    font-family: futura;
+}
+
+input {
+    border-radius: 10px;
+    background-color: whitesmoke;
+    height: 25px;
+}
 
 button {
     border-radius: 8px;
@@ -65,12 +77,37 @@ button:focus-visible {
     text-align: center;
 }
 
+/* .flip-container {
+    width: calc(50% - 20px); 
+    height: 100px;
+    margin: 10px;
+    perspective: 1000px;
+    display: inline-block;
+} */
+
+.ModalContent {
+    background-color: blue;
+    font-size: 20px;
+}
+
+.dogImg {
+    width: 300px;
+    height: auto;
+    border: 1px;
+    border-radius: 20px;
+}
+.animalCardsContainer {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .flip-container {
     width: calc(50% - 20px); /* Two cards side by side with spacing */
     height: 100px;
     margin: 10px;
     perspective: 1000px;
     display: inline-block;
+    position: relative; /* Add position relative */
 }
 
 .homeCardContainer {
@@ -98,20 +135,27 @@ button:focus-visible {
     font-weight: 500;
 }
 
+Form {
+    text-align: center;
+}
+
 .card {
-    width: calc(100% - 20px); /* Two cards side by side with spacing */
-    height: 100px;
-    margin: 10px;
-    background-color: #f0f0f0;
-    transition: width 0.5s;
-    float: left;
+    width: 100%; /* Card takes full width */
+    height: 100%;
+    position: relative;
     transform-style: preserve-3d;
+    transition: transform 0.5s; /* Use transform for animation */
+    z-index: 1;
 }
 
 .card.expanded {
     width: calc(200% - 20px);
     height: 200px;
-    margin: 10px 0;
+    transform: rotateY(180deg) translateY(-50%); /* Rotate and move the card */
+    position: absolute; /* Position absolute for expanded card */
+    top: 50%; /* Align expanded card vertically */
+    left: 0; /* Align expanded card to the left */
+    z-index: 20; /* Set z-index higher to appear on top of other cards */
 }
 
 .front,
@@ -143,6 +187,10 @@ button:focus-visible {
     transform: rotateY(180deg);
     border: white solid 5px;
     border-radius: 10px;
+    font-family: futura;
+    font-size: 20px;
+    /* margin: 5px; */
+    /* padding: 10px; */
 }
 
 .card.isflipped {
@@ -160,6 +208,151 @@ button:focus-visible {
     display: table;
     clear: both;
 }
+
+/* FOR ANIMALS PAGE ------------------------------------------------*/
+
+.animal-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: 1400px;
+}
+
+.flip-container-animals {
+    /* width: calc(50% - 20px); Two cards side by side with spacing */
+    width: 200px;
+    height: 100px;
+    margin: 10px;
+    perspective: 1000px;
+    display: inline-block;
+    position: relative;
+}
+
+.cardAnimals {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    transform-style: preserve-3d;
+    margin: 10px; /* Adds space between cards */
+}
+
+.frontAnimals,
+.backAnimals {
+    /* width: 200%; */
+    height: 200%;
+    position: absolute;
+    backface-visibility: hidden;
+    transition: transform 0.6s;
+}
+
+.frontAnimals {
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+}
+
+.backAnimals {
+    transform: rotateY(180deg);
+    background-color: #2ecc71;
+    color: white;
+    font-family: futura;
+    font-size: 18px;
+    padding-left: 15px;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    /* transform: rotateY(180deg); */
+    border: white solid 5px;
+    border-radius: 10px;
+}
+
+.flip-container-animals.flippedA .frontAnimals {
+    transform: rotateY(180deg);
+}
+
+.flip-container-animals.flippedA .backAnimals {
+    transform: rotateY(0deg);
+
+    width: 300px;
+}
+
+/* COLORS CARDS --------------------------------------------- */
+
+.colorsBody {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.flip-container-colors {
+    width: 300px; /* Two cards side by side with spacing */
+    height: 200px;
+    margin: 10px;
+    perspective: 1000px;
+    display: inline-block;
+    position: relative; /* Add position relative */
+}
+
+.card.expandedColors {
+    width: 300px;
+    height: 200px;
+    transform: rotateY(180deg) translateY(-50%); /* Rotate and move the card */
+    position: absolute; /* Position absolute for expanded card */
+    top: 50%; /* Align expanded card vertically */
+    left: 0; /* Align expanded card to the left */
+    z-index: 20; /* Set z-index higher to appear on top of other cards */
+}
+
+/* .animal-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.flip-container-animals {
+    perspective: 1000px;
+    margin: 10px;
+}
+
+.cardAnimals {
+    width: 200px;
+    height: 300px;
+    position: relative;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.cardAnimals.front,
+.cardAnimals.backAnimals {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+}
+
+.cardAnimals.frontAnimals {
+    z-index: 2;
+}
+
+.cardAnimals.backAnimals {
+    transform: rotateY(180deg);
+}
+
+.flip-container-animals.flippedA .cardAnimals {
+    transform: rotateY(180deg);
+}
+
+.cardAnimals img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cardAnimals p {
+    padding: 10px;
+    font-size: 14px;
+    text-align: center;
+} */
 
 /* Media query for mobile screens */
 

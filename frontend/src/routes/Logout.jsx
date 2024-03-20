@@ -9,7 +9,7 @@ export const loader = async () => {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
-            Authorizaion: `Bearer ${access_token}`,
+            Authorization: `Bearer ${access_token}`,
         },
     });
     const statusCode = response.status;

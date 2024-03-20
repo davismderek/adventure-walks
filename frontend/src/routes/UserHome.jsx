@@ -7,7 +7,7 @@ const UserHome = () => {
     return (
         <>
             <h1>
-                Hello Adventurer!<span> </span>
+                Hello, Adventurer!<span> </span>
                 <FontAwesomeIcon icon={faPersonHiking} />
                 <span> </span>
                 {/* <FontAwesomeIcon icon={faPersonWalking} /> */}
@@ -15,9 +15,9 @@ const UserHome = () => {
             <div>
                 <h2 className="homeHeaders">Go on a Scavenger Hunt!</h2>
                 <div className="homeCardContainer">
-                    <div className="homeCard">
+                    <Link to="/colors" className="homeCard">
                         <p>COLORS</p>
-                    </div>
+                    </Link>
 
                     <Link to="/animals" className="homeCard">
                         <p>ANIMALS</p>
@@ -39,9 +39,9 @@ const UserHome = () => {
                     <Link to="/abc" className="homeCard">
                         <p>ABC's</p>
                     </Link>
-                    <div className="homeCard">
+                    <Link to="/numbers" className="homeCard">
                         <p>123's</p>
-                    </div>
+                    </Link>
                 </div>
             </div>
         </>

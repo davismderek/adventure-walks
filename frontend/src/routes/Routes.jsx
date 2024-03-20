@@ -5,11 +5,13 @@ import Login, { action as loginAction } from "./Login";
 import Register, { action as registerAction } from "./Register";
 import ProtectedLayout from "../pages/ProtectedLayout";
 import UserHome from "./UserHome";
-import Letters from "./ABCs";
+import Letters, { loader as lettersLoader } from "./ABCs";
+import Colors, { loader as colorsLoader } from "./Colors";
 import Animals from "./Animals";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Logout, { loader as logoutLoader } from "./Logout";
 import Account, { loader as accountLoader } from "./Account";
+import Numbers from "./Numbers";
 
 const Routes = () => {
     const { isAuth } = useAuth();
@@ -52,10 +54,20 @@ const Routes = () => {
                 {
                     path: "/abc",
                     element: <Letters />,
+                    loader: lettersLoader,
+                },
+                {
+                    path: "/colors",
+                    element: <Colors />,
+                    loader: colorsLoader,
                 },
                 {
                     path: "/animals",
                     element: <Animals />,
+                },
+                {
+                    path: "/numbers",
+                    element: <Numbers />,
                 },
                 {
                     path: "/account",

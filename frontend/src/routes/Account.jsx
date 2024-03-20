@@ -1,34 +1,30 @@
 import { Link, useLoaderData } from "react-router-dom";
 
 export async function loader() {
-    try {
-        const url = "http://localhost:8000/email/";
-        const access_token = localStorage.getItem("access_token");
+    const url = "http://localhost:8000/email/";
+    const access_token = localStorage.getItem("access_token");
 
-        const userEmail = await fetch(url, {
-            method: "GET",
-            headers: {
-                "Content=Type": "application/json",
-                Authorizaion: `Bearer ${access_token}`,
-            },
-        }).then((response) => response.json());
-        return { userEmail };
-    } catch (error) {
-        console.log("ERROR:", error);
-        return { error };
-    }
+    const userEmail = await fetch(url, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${access_token}`,
+        },
+    }).then((response) => response.json());
+
+    return { userEmail };
 }
 
 const Account = () => {
     const { userEmail } = useLoaderData();
+    const email = userEmail.data.length > 0 ? userEmail.data[0].email : "";
     return (
         <>
             <h1>Account Page</h1>
-            {userEmail}
-            <p>
-                {userEmail}
-                <Link to="/logout">Click here</Link> to logout.
-            </p>
+            <p>Email: {email}</p>
+            <button>
+                <Link to="/logout">Sign Out</Link>
+            </button>
         </>
     );
 };

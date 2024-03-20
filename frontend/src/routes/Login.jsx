@@ -17,13 +17,19 @@ export const action = async ({ request }) => {
             },
             body: JSON.stringify(loginData),
         });
+        console.log("response:", response);
 
         const statusCode = response.status;
         const data = await response.json();
+        console.log("Data:", data);
 
-        const { access_token } = data;
+        // const { data } = await response.json();
+        // const { session, user} = data;
+        const access_token = data.session.access_token;
+        const user_id = data.user.id;
         localStorage.clear();
         localStorage.setItem("access_token", access_token);
+        localStorage.setItem("user_id", user_id);
         return statusCode === 200 ? true : false;
         // return redirect("/userhome");
     } catch (error) {
