@@ -1,27 +1,39 @@
-import { Form, useLoaderData } from "react-router-dom";
-import React, { useState } from "react";
-
-export async function loader() {
-    const url = "http://localhost:8000/colors/getColorFound";
-    const access_token = localStorage.getItem("access_token");
-
-    const tableData = await fetch(url, {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${access_token}`,
-        },
-    }).then((response) => response.json());
-
-    return { tableData };
-}
+import { Form } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import Lottie from "lottie-react";
 
 const Colors = () => {
-    const { tableData } = useLoaderData();
-    const colorData =
-        tableData.data.length > 0 ? tableData.data[0].userFound : "";
-
+    const [colorFound, setColorFound] = useState({ data: [] });
     const [expandedCard, setExpandedCard] = useState(null);
+    const [animationPlayed, setAnimationPlayed] = useState(false);
+
+    const fetchData = async () => {
+        try {
+            const url = "http://localhost:8000/colors/getColorFound";
+            const access_token = localStorage.getItem("access_token");
+
+            const response = await fetch(url, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${access_token}`,
+                },
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                setColorFound(data);
+            } else {
+                console.error("Failed to fetch letterFound data");
+            }
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    };
+
+    useEffect(() => {
+        fetchData();
+    }, []);
 
     const handleCardClick = (colorName) => {
         if (expandedCard === colorName) {
@@ -31,26 +43,17 @@ const Colors = () => {
         }
     };
 
-    const getColorUserFound = (colorName) => {
-        const colorData = tableData.data.find(
-            (item) => item.color === colorName
-        );
-        return colorData ? colorData.userFound : ""; // If colorData is found, return userFound, else return empty string
-    };
-
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        // const colorNa = event.target[0].name;
-        // console.log(colorNa);
         const formData = new FormData(event.target);
         const color = formData.get("color");
         const userFound = formData.get("userFound");
-        // const colorName = event.target[0].value;
-        // console.log({ colorName });
+
         try {
             const url = `${import.meta.env.VITE_SOURCE_URL}/colorsinput`;
             const access_token = localStorage.getItem("access_token");
+            const user_id = localStorage.getItem("user_id");
 
             const response = await fetch(url, {
                 method: "POST",
@@ -67,6 +70,8 @@ const Colors = () => {
 
             if (response.ok) {
                 console.log("Data inserted successfully");
+                fetchData();
+                setAnimationPlayed(true);
             } else {
                 console.error("Failed to insert data");
             }
@@ -75,7 +80,37 @@ const Colors = () => {
         }
     };
 
-    const user_id = localStorage.getItem("user_id");
+    const renderStars = (colorName) => {
+        if (!colorFound || !colorFound.data) return "";
+
+        const colorData = colorFound.data.filter(
+            (item) => item.color === colorName
+        );
+        // console.log("Data:", colorData);
+        if (colorData.length) {
+            const userData = colorData.map((data) => {
+                console.log(data);
+                if (data.userFound) {
+                    return (
+                        <p
+                            style={{
+                                fontSize: "22px",
+                                textAlign: "center",
+                                fontWeight: "500",
+                                margin: "5px",
+                            }}
+                        >
+                            ✓ {data.userFound}
+                        </p>
+                    );
+                }
+            });
+            return userData;
+
+            // return <p style={{ fontSize: "20px" }}>✓ {colorData.stars} </p>;
+        }
+        return "";
+    };
 
     const colors = [
         { colorName: "red", color: "#FF0000" },
@@ -92,11 +127,20 @@ const Colors = () => {
 
     return (
         <>
-            <h1>Colors Page</h1>
+            {animationPlayed && (
+                <Lottie
+                    animationDataUrl="https://lottie.host/f9ce69d8-99fb-4b7e-aeb0-32468068f077/LKzzVUFLW3.json"
+                    autoplay={true}
+                    loop={false}
+                    style={{ width: 200, height: 200 }}
+                />
+            )}
+            <h1>Colors </h1>
             <div className="introText">
                 <p>
                     On today's adventure, we're hunting for colors! Tell us what
-                    you can find that matches the color.
+                    you can found that matches the color and then look for the
+                    checkmark. ✓
                 </p>
             </div>
 
@@ -126,13 +170,8 @@ const Colors = () => {
                             >
                                 <p style={{ margin: "0" }}>
                                     {colorName.toUpperCase()}
+                                    {renderStars(colorName)}
                                 </p>
-                                {getColorUserFound(colorName) && (
-                                    <p style={{ fontSize: "20px" }}>
-                                        You found: {colorName}{" "}
-                                        {getColorUserFound(colorName)}
-                                    </p>
-                                )}
                             </div>
                             <div
                                 className="back"

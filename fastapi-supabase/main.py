@@ -56,9 +56,9 @@ def get_email():
     response = supabase.table('profile').select('email').execute()
     return response
 
-@app.get('/letterinput/getuserFound')
-def get_userFound():
-    response = supabase.table('abcs').select('userFound').execute()
+@app.get('/letterinput/getLetterFound')
+def get_letterFound():
+    response = supabase.table('abcs').select('userFound', 'letter').execute()
     return response
 
 @app.get('/colors/getColorFound')
@@ -73,7 +73,7 @@ async def insert_data(data: Abcs):
     try:
         table_name = "abcs"
         response = supabase.table(table_name).insert([
-            {"user_id": data.user_id, "userFound": data.userFound}
+            {"user_id": data.user_id, "userFound": data.userFound, "letter":data.letter}
         ]).execute()
         print(response)
         # if response.error:

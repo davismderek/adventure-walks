@@ -33,6 +33,11 @@ body {
 h1 {
     font-size: 3.2em;
     line-height: 1.1;
+    margin: 40px 15px 10px;
+}
+
+hr {
+    margin: 0px 15px 0px;
 }
 .introText {
     /* margin: 10px; */
@@ -45,6 +50,8 @@ input {
     border-radius: 10px;
     background-color: whitesmoke;
     height: 25px;
+    color: black;
+    font-family: futura;
 }
 
 button {
@@ -103,9 +110,10 @@ button:focus-visible {
 
 .flip-container {
     width: calc(50% - 20px); /* Two cards side by side with spacing */
-    height: 100px;
+    /* width: 300px; */
+    height: 160px;
     margin: 10px;
-    perspective: 1000px;
+    /* perspective: 1000px; */
     display: inline-block;
     position: relative; /* Add position relative */
 }
@@ -149,12 +157,16 @@ Form {
 }
 
 .card.expanded {
-    width: calc(200% - 20px);
-    height: 200px;
-    transform: rotateY(180deg) translateY(-50%); /* Rotate and move the card */
-    position: absolute; /* Position absolute for expanded card */
+    /* width: calc(200% - 20px); */
+    width: 350px;
+    height: 250px;
+    /* transform: rotateY(180deg); */
+    /* display: flex; */
+    transform: rotateY(180deg) translateY(-50%); /*Rotate and move the card*/
+    position: absolute;
+    /* Position absolute for expanded card */
     top: 50%; /* Align expanded card vertically */
-    left: 0; /* Align expanded card to the left */
+    margin-left: 3px; /* Align expanded card to the left */
     z-index: 20; /* Set z-index higher to appear on top of other cards */
 }
 
@@ -171,6 +183,7 @@ Form {
     color: white;
     display: flex;
     justify-content: center;
+    flex-flow: column;
     align-items: center;
     font-family: futura;
     font-size: 64px;
@@ -209,12 +222,111 @@ Form {
     clear: both;
 }
 
+/* FOR NUMBERS PAGE ---------------------------------------------- */
+.number-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.flip-container-numbers {
+    width: 325px;
+    height: 200px;
+    /* margin: 10px; */
+    /* perspective: 1000px; */
+    /* display: inline-block; */
+    display: flex;
+    /* position: relative; */
+    margin-bottom: 30px;
+}
+
+.cardNumbers {
+    width: 100%;
+    height: 100%;
+    /* position: relative; */
+    transform-style: preserve-3d;
+    /* margin: 10px; */
+}
+
+.frontNumbers {
+    width: 100%;
+    height: 100%;
+    background-color: blue;
+    display: flex;
+    /* justify-content: center; */
+    justify-content: space-evenly;
+    border: white solid 5px;
+    border-radius: 10px;
+    font-size: 80px;
+    align-items: center;
+    align-content: center;
+}
+
+.numFrontIcon {
+    display: flex;
+    flex-direction: column;
+    font-size: 50px;
+    align-items: center;
+    line-height: 0px;
+}
+
+p.numFrontIcon {
+    /* margin: 10px; */
+    line-height: 0px;
+}
+
+.frontNumbers,
+.backNumbers {
+    position: absolute;
+    backface-visibility: hidden;
+    transition: transform 0.6s;
+}
+
+.backNumbers {
+    width: 100%;
+    height: 100%;
+    transform: rotateY(180deg);
+    background-color: darkgreen;
+    color: white;
+    font-family: futura;
+    /* padding-left: 20px; */
+    /* padding-left: 15px; */
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    /* transform: rotateY(180deg); */
+    border: white solid 5px;
+    border-radius: 10px;
+}
+
+.numBackHeading {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    font-size: 32px;
+    line-height: 0;
+}
+
+.numBackText {
+    padding: 10px 15px 0px 15px;
+    font-size: 22px;
+    line-height: 1;
+}
+
+.flip-container-numbers.flippedA .frontNumbers {
+    transform: rotateY(180deg);
+}
+
+.flip-container-numbers.flippedA .backNumbers {
+    transform: rotateY(0deg);
+}
+
 /* FOR ANIMALS PAGE ------------------------------------------------*/
 
 .animal-cards {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    /* justify-content: center; */
     height: 1400px;
 }
 
@@ -285,74 +397,23 @@ Form {
 }
 
 .flip-container-colors {
-    width: 300px; /* Two cards side by side with spacing */
+    width: 300px;
     height: 200px;
     margin: 10px;
     perspective: 1000px;
     display: inline-block;
-    position: relative; /* Add position relative */
+    position: relative;
 }
 
 .card.expandedColors {
-    width: 300px;
-    height: 200px;
+    /* width: 300px;
+    height: 200px; */
     transform: rotateY(180deg) translateY(-50%); /* Rotate and move the card */
     position: absolute; /* Position absolute for expanded card */
     top: 50%; /* Align expanded card vertically */
-    left: 0; /* Align expanded card to the left */
+    left: 10px; /* Align expanded card to the left */
     z-index: 20; /* Set z-index higher to appear on top of other cards */
 }
-
-/* .animal-cards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.flip-container-animals {
-    perspective: 1000px;
-    margin: 10px;
-}
-
-.cardAnimals {
-    width: 200px;
-    height: 300px;
-    position: relative;
-    transition: transform 0.6s;
-    transform-style: preserve-3d;
-}
-
-.cardAnimals.front,
-.cardAnimals.backAnimals {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    backface-visibility: hidden;
-}
-
-.cardAnimals.frontAnimals {
-    z-index: 2;
-}
-
-.cardAnimals.backAnimals {
-    transform: rotateY(180deg);
-}
-
-.flip-container-animals.flippedA .cardAnimals {
-    transform: rotateY(180deg);
-}
-
-.cardAnimals img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.cardAnimals p {
-    padding: 10px;
-    font-size: 14px;
-    text-align: center;
-} */
 
 /* Media query for mobile screens */
 

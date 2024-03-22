@@ -5,8 +5,8 @@ import Login, { action as loginAction } from "./Login";
 import Register, { action as registerAction } from "./Register";
 import ProtectedLayout from "../pages/ProtectedLayout";
 import UserHome from "./UserHome";
-import Letters, { loader as lettersLoader } from "./ABCs";
-import Colors, { loader as colorsLoader } from "./Colors";
+import Letters from "./ABCs";
+import Colors from "./Colors";
 import Animals from "./Animals";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Logout, { loader as logoutLoader } from "./Logout";
@@ -54,12 +54,10 @@ const Routes = () => {
                 {
                     path: "/abc",
                     element: <Letters />,
-                    loader: lettersLoader,
                 },
                 {
                     path: "/colors",
                     element: <Colors />,
-                    loader: colorsLoader,
                 },
                 {
                     path: "/animals",

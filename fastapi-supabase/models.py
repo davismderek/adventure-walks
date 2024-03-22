@@ -23,6 +23,7 @@ class Colors(BaseModel):
 class Abcs(BaseModel):
     user_id: str
     userFound: str
+    letter: str
     # B: str
     # c: str
     # d: str
