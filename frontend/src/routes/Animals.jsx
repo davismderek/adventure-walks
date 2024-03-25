@@ -14,7 +14,7 @@ const AnimalCard = ({ imageSrc, fact1, fact2, fact3, animal }) => {
         >
             <div className="cardAnimals">
                 <div className=" frontAnimals">
-                    <img className="dogImg" src={imageSrc} alt="Animal" />
+                    <img className="dogImg" src={imageSrc} alt={animal} />
                 </div>
                 <div className=" backAnimals">
                     <h3>Fun Facts about {animal}s!</h3>

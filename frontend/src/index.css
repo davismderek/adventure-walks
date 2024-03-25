@@ -31,9 +31,42 @@ body {
 }
 
 h1 {
-    font-size: 3.2em;
+    font-size: 4em;
     line-height: 1.1;
     margin: 40px 15px 10px;
+    text-align: center;
+}
+
+.walter-turncoat-regular {
+    font-family: "Walter Turncoat", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.userHome {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: stretch;
+    justify-content: center;
+    gap: 200px;
+}
+
+.bgs {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: stretch;
+    justify-content: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+.h1,
+.userHome {
+    /* color: darkgreen; */
+    color: white;
+    font-size: 0.8em;
 }
 
 hr {
@@ -44,14 +77,29 @@ hr {
     margin: 0px 15px 0px;
     font-size: 22px;
     font-family: futura;
+    /* background-color: #60a43fc2; */
+    background-color: #58bad6c2;
+    border-radius: 34px;
+    padding-left: 15px;
+}
+
+.loginForm {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
 }
 
 input {
     border-radius: 10px;
     background-color: whitesmoke;
-    height: 25px;
-    color: black;
+    height: 30px;
+    color: rgb(11, 11, 11);
     font-family: futura;
+    font-size: 15px;
+}
+
+.map {
+    height: 180px;
 }
 
 button {
@@ -82,19 +130,43 @@ button:focus-visible {
 
 .homeHeaders {
     text-align: center;
+    font-size: 20px;
+    background-color: #ffffffba;
+    /* width: 100%; */
+    border-radius: 50px;
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
-/* .flip-container {
-    width: calc(50% - 20px); 
-    height: 100px;
-    margin: 10px;
-    perspective: 1000px;
-    display: inline-block;
-} */
+h2,
+.homeHeaders {
+    color: darkgreen;
+    padding: 0px 20px 0px 20px;
+}
 
-.ModalContent {
+/* .ModalContent {
     background-color: blue;
     font-size: 20px;
+} */
+
+.colorH1 {
+    background: linear-gradient(
+        to right,
+        violet,
+        indigo,
+        blue,
+        green,
+        yellow,
+        orange,
+        red
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
 }
 
 .dogImg {
@@ -115,21 +187,34 @@ button:focus-visible {
     margin: 10px;
     /* perspective: 1000px; */
     display: inline-block;
-    position: relative; /* Add position relative */
+    position: relative;
+}
+
+.flip-container:nth-child(even) .card .back {
+    left: 50%;
 }
 
 .homeCardContainer {
     display: flex;
 }
 
+.homeBtnSection {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 30px;
+}
+
 .homeCard {
     width: calc(50% - 20px);
-    height: 100px;
+    /* height: 100px; */
+    height: 60px;
     margin: 10px;
-    background-color: #5f6bee;
+    background-color: #064d1dc7;
     text-align: center;
     line-height: 100px;
-    border-radius: 5px;
+    padding: 0px 10px 0px 10px;
+    border-radius: 20px;
 }
 
 .p,
@@ -140,7 +225,7 @@ button:focus-visible {
     text-align: center;
     color: white;
     font-size: 20px;
-    font-weight: 500;
+    font-weight: 700;
 }
 
 Form {
@@ -162,12 +247,11 @@ Form {
     height: 250px;
     /* transform: rotateY(180deg); */
     /* display: flex; */
-    transform: rotateY(180deg) translateY(-50%); /*Rotate and move the card*/
+    transform: rotateY(180deg) translateY(-50%);
     position: absolute;
-    /* Position absolute for expanded card */
-    top: 50%; /* Align expanded card vertically */
-    margin-left: 3px; /* Align expanded card to the left */
-    z-index: 20; /* Set z-index higher to appear on top of other cards */
+    top: 50%;
+    margin-left: 3px;
+    z-index: 20;
 }
 
 .front,
@@ -188,7 +272,7 @@ Form {
     font-family: futura;
     font-size: 64px;
     border: white solid 5px;
-    border-radius: 10px;
+    border-radius: 40px;
 }
 
 .back {
@@ -199,9 +283,10 @@ Form {
     align-items: center;
     transform: rotateY(180deg);
     border: white solid 5px;
-    border-radius: 10px;
+    border-radius: 40px;
     font-family: futura;
     font-size: 20px;
+    left: -23%;
     /* margin: 5px; */
     /* padding: 10px; */
 }
@@ -231,7 +316,7 @@ Form {
 
 .flip-container-numbers {
     width: 325px;
-    height: 200px;
+    height: 220px;
     /* margin: 10px; */
     /* perspective: 1000px; */
     /* display: inline-block; */
@@ -251,12 +336,12 @@ Form {
 .frontNumbers {
     width: 100%;
     height: 100%;
-    background-color: blue;
+    background-color: #064d1dc4;
     display: flex;
     /* justify-content: center; */
     justify-content: space-evenly;
     border: white solid 5px;
-    border-radius: 10px;
+    border-radius: 50px;
     font-size: 80px;
     align-items: center;
     align-content: center;
@@ -296,14 +381,15 @@ p.numFrontIcon {
     align-items: center; */
     /* transform: rotateY(180deg); */
     border: white solid 5px;
-    border-radius: 10px;
+    border-radius: 50px;
 }
 
 .numBackHeading {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    font-size: 32px;
+    padding-top: 5px;
+    /* font-size: 32px; */
     line-height: 0;
 }
 
@@ -390,6 +476,10 @@ p.numFrontIcon {
 
 /* COLORS CARDS --------------------------------------------- */
 
+.colorsAnimation {
+    display: flex;
+}
+
 .colorsBody {
     display: flex;
     flex-wrap: wrap;
@@ -398,8 +488,8 @@ p.numFrontIcon {
 
 .flip-container-colors {
     width: 300px;
-    height: 200px;
-    margin: 10px;
+    height: 250px;
+    margin: 15px 0px 15px 0px;
     perspective: 1000px;
     display: inline-block;
     position: relative;
@@ -414,6 +504,10 @@ p.numFrontIcon {
     left: 10px; /* Align expanded card to the left */
     z-index: 20; /* Set z-index higher to appear on top of other cards */
 }
+
+/* .colorsAnimation {
+    display: flex;
+} */
 
 /* Media query for mobile screens */
 

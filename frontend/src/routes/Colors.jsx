@@ -1,11 +1,14 @@
 import { Form } from "react-router-dom";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Lottie from "lottie-react";
+import { Player, Controls } from "@lottiefiles/react-lottie-player";
+import Animation from "../components/Animation";
+import bg2 from "../assets/bg2.png";
 
 const Colors = () => {
     const [colorFound, setColorFound] = useState({ data: [] });
     const [expandedCard, setExpandedCard] = useState(null);
-    const [animationPlayed, setAnimationPlayed] = useState(false);
+    const [animationPlayed, setAnimationPlayed] = useState(null);
 
     const fetchData = async () => {
         try {
@@ -23,6 +26,8 @@ const Colors = () => {
             if (response.ok) {
                 const data = await response.json();
                 setColorFound(data);
+                setAnimationPlayed(false);
+                console.log("setAnimationFalse");
             } else {
                 console.error("Failed to fetch letterFound data");
             }
@@ -41,6 +46,37 @@ const Colors = () => {
         } else {
             setExpandedCard(colorName);
         }
+    };
+
+    const displayFound = (colorName) => {
+        if (!colorFound || !colorFound.data) return "";
+
+        const colorData = colorFound.data.filter(
+            (item) => item.color === colorName
+        );
+
+        if (colorData.length) {
+            const latestThree = colorData.slice(0, 3);
+            const userData = latestThree.map((data) => {
+                // console.log(data);
+                if (data.userFound) {
+                    return (
+                        <p
+                            style={{
+                                fontSize: "22px",
+                                textAlign: "center",
+                                fontWeight: "500",
+                                margin: "5px",
+                            }}
+                        >
+                            ✓ {data.userFound}
+                        </p>
+                    );
+                }
+            });
+            return userData;
+        }
+        return "";
     };
 
     const handleSubmit = async (event) => {
@@ -70,46 +106,19 @@ const Colors = () => {
 
             if (response.ok) {
                 console.log("Data inserted successfully");
-                fetchData();
-                setAnimationPlayed(true);
+                setAnimationPlayed(color);
+                setTimeout(() => {
+                    fetchData();
+                }, 1000);
+                // playerRef.current.play();
+                // fetchData();
+                // playerRef.current.play();
             } else {
                 console.error("Failed to insert data");
             }
         } catch (error) {
             console.error("Error:", error);
         }
-    };
-
-    const renderStars = (colorName) => {
-        if (!colorFound || !colorFound.data) return "";
-
-        const colorData = colorFound.data.filter(
-            (item) => item.color === colorName
-        );
-        // console.log("Data:", colorData);
-        if (colorData.length) {
-            const userData = colorData.map((data) => {
-                console.log(data);
-                if (data.userFound) {
-                    return (
-                        <p
-                            style={{
-                                fontSize: "22px",
-                                textAlign: "center",
-                                fontWeight: "500",
-                                margin: "5px",
-                            }}
-                        >
-                            ✓ {data.userFound}
-                        </p>
-                    );
-                }
-            });
-            return userData;
-
-            // return <p style={{ fontSize: "20px" }}>✓ {colorData.stars} </p>;
-        }
-        return "";
     };
 
     const colors = [
@@ -124,92 +133,102 @@ const Colors = () => {
         { colorName: "black", color: "#000000" },
         { colorName: "white", color: "#FFFFFF" },
     ];
-
+    console.log(animationPlayed);
     return (
         <>
-            {animationPlayed && (
-                <Lottie
-                    animationDataUrl="https://lottie.host/f9ce69d8-99fb-4b7e-aeb0-32468068f077/LKzzVUFLW3.json"
-                    autoplay={true}
-                    loop={false}
-                    style={{ width: 200, height: 200 }}
-                />
-            )}
-            <h1>Colors </h1>
-            <div className="introText">
-                <p>
-                    On today's adventure, we're hunting for colors! Tell us what
-                    you can found that matches the color and then look for the
-                    checkmark. ✓
-                </p>
-            </div>
+            <div
+                className="bgs"
+                style={{
+                    backgroundImage: `url(${bg2})`,
+                }}
+            >
+                <h1 className="colorH1">Colors </h1>
+                <div className="introText">
+                    <p>
+                        On today's adventure, we're hunting for colors! Tell us
+                        what you can found that matches the color and then look
+                        for the checkmark. ✓
+                    </p>
+                </div>
 
-            <div className="colorsBody">
-                {colors.map(({ colorName, color }) => (
-                    <div className="flip-container-colors" key={colorName}>
-                        <div
-                            className={`card ${
-                                expandedCard === colorName
-                                    ? "expandedColors"
-                                    : ""
-                            }`}
-                            onClick={() => handleCardClick(colorName)}
-                        >
+                <div className="colorsBody">
+                    {colors.map(({ colorName, color }) => (
+                        <div className="flip-container-colors" key={colorName}>
                             <div
-                                className="front"
-                                style={{
-                                    backgroundColor: color,
-                                    color:
-                                        color === "#FFFFFF"
-                                            ? "#000000"
-                                            : undefined,
-                                    display: "flex",
-                                    margin: "0",
-                                    flexDirection: "column",
-                                }}
+                                className={`card ${
+                                    expandedCard === colorName
+                                        ? "expandedColors"
+                                        : ""
+                                }`}
+                                onClick={() => handleCardClick(colorName)}
                             >
-                                <p style={{ margin: "0" }}>
+                                <div
+                                    className="front"
+                                    style={{
+                                        backgroundColor: color,
+                                        color:
+                                            color === "#FFFFFF"
+                                                ? "#000000"
+                                                : undefined,
+                                        display: "flex",
+                                        margin: "0",
+                                        flexDirection: "column",
+                                    }}
+                                >
+                                    {animationPlayed === colorName ? (
+                                        <Animation />
+                                    ) : (
+                                        <p style={{ margin: "0" }}>
+                                            {colorName.toUpperCase()}
+                                            {displayFound(colorName)}
+                                        </p>
+                                    )}
+                                    {/* <p style={{ margin: "0" }}>
                                     {colorName.toUpperCase()}
-                                    {renderStars(colorName)}
-                                </p>
-                            </div>
-                            <div
-                                className="back"
-                                id="back"
-                                style={{
-                                    backgroundColor: color,
-                                    color:
-                                        color === "#FFFFFF"
-                                            ? "#000000"
-                                            : undefined,
-                                }}
-                            >
-                                <Form onSubmit={handleSubmit}>
-                                    <label>
-                                        What did you find on your adventure that
-                                        was{" "}
-                                        <span style={{ fontWeight: "600" }}>
-                                            {colorName}
-                                        </span>
-                                        ?
-                                        <input type="text" name="userFound" />
-                                        <input
-                                            type="hidden"
-                                            value={colorName}
-                                            name="color"
-                                        />
-                                    </label>
-                                    <button
-                                        style={{ margin: "5px" }}
-                                        type="submit"
-                                    >
-                                        Submit
-                                    </button>
-                                </Form>
+                                    {displayFound(colorName)}
+                                </p> */}
+                                </div>
+                                <div
+                                    className="back"
+                                    id="back"
+                                    style={{
+                                        backgroundColor: color,
+                                        color:
+                                            color === "#FFFFFF"
+                                                ? "#000000"
+                                                : undefined,
+                                    }}
+                                >
+                                    <Form onSubmit={handleSubmit}>
+                                        <label>
+                                            What did you find on your adventure
+                                            that was{" "}
+                                            <span style={{ fontWeight: "600" }}>
+                                                {colorName}
+                                            </span>
+                                            ?
+                                            <input
+                                                type="text"
+                                                name="userFound"
+                                            />
+                                            <input
+                                                type="hidden"
+                                                value={colorName}
+                                                name="color"
+                                            />
+                                        </label>
+                                        <button
+                                            style={{ margin: "5px" }}
+                                            type="submit"
+                                        >
+                                            Submit
+                                        </button>
+                                    </Form>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
             </div>
         </>
     );

@@ -41,28 +41,32 @@ export const action = async ({ request }) => {
 const Login = () => {
     const { isAuth, setIsAuth } = useAuth();
     const response = useActionData();
+    
 
     useEffect(() => {
         setIsAuth(response);
     }, [response, setIsAuth]);
     return !isAuth ? (
-        <Form method="POST">
+        <>
             <h1>Login</h1>
-
-            <label>
-                Enter Account Email:
-                <input type="text" name="email" />
-            </label>
-            <label>
-                Enter Account Password:
-                <input type="password" name="password" />
-            </label>
-            <button type="submit">Submit</button>
-            <p>
-                If you need to create an account,
-                <Link to="/register"> click here.</Link>
-            </p>
-        </Form>
+            <div>
+                <Form className="loginForm" method="POST">
+                    <label>
+                        Enter Account Email:
+                        <input type="text" name="email" />
+                    </label>
+                    <label>
+                        Enter Account Password:
+                        <input type="password" name="password" />
+                    </label>
+                    <button type="submit">Submit</button>
+                    <p>
+                        If you need to create an account,
+                        <Link to="/register"> click here.</Link>
+                    </p>
+                </Form>
+            </div>
+        </>
     ) : (
         <Navigate to="/userhome" />
     );

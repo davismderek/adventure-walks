@@ -1,5 +1,6 @@
 import { Form } from "react-router-dom";
 import React, { useState, useEffect } from "react";
+import bg1 from "../assets/bg1.png";
 
 const Letters = () => {
     const [letterFound, setLetterFound] = useState({ data: [] });
@@ -120,55 +121,68 @@ const Letters = () => {
 
     return (
         <>
-            <h1>ABC's </h1>
-            <hr></hr>
-            <div className="introText">
-                <p>
-                    On today's adventure, find something that begins with each
-                    letter of the alphabet. See if you can collect all the gold
-                    stars at the end! ⭐
-                </p>
-            </div>
+            <div
+                className="bgs"
+                style={{
+                    backgroundImage: `url(${bg1})`,
+                }}
+            >
+                <h1>ABC's </h1>
+                <div className="introText">
+                    <p>
+                        On today's adventure, find something that begins with
+                        each letter of the alphabet. See if you can collect all
+                        the gold stars at the end! ⭐
+                    </p>
+                </div>
 
-            <div className="abcBody">
-                {letters.map((letter) => (
-                    <div className="flip-container" key={letter}>
-                        <div
-                            className={`card ${
-                                expandedCard === letter ? "expanded" : ""
-                            }`}
-                            onClick={() => handleCardClick(letter)}
-                        >
-                            <div className="front">
-                                <p style={{ margin: "0px" }}>{letter}</p>
+                <div className="abcBody">
+                    {letters.map((letter) => (
+                        <div className="flip-container" key={letter}>
+                            <div
+                                className={`card ${
+                                    expandedCard === letter ? "expanded" : ""
+                                }`}
+                                onClick={() => handleCardClick(letter)}
+                            >
+                                <div className="front">
+                                    <p style={{ margin: "0px" }}>{letter}</p>
 
-                                {renderStars(letter)}
-                            </div>
+                                    {renderStars(letter)}
+                                </div>
 
-                            <div className="back" id="back">
-                                <Form onSubmit={handleSubmit}>
-                                    <label>
-                                        <p>
-                                            What did you find that starts with
-                                            the letter{" "}
-                                            <span style={{ fontWeight: "600" }}>
-                                                {letter}
-                                            </span>
-                                            ?
-                                        </p>
-                                        <input type="text" name="userFound" />
-                                        <input
-                                            type="hidden"
-                                            value={letter}
-                                            name="letter"
-                                        />
-                                    </label>
-                                    <button type="submit">Submit</button>
-                                </Form>
+                                <div className="back" id="back">
+                                    <Form onSubmit={handleSubmit}>
+                                        <label>
+                                            <p>
+                                                What did you find that starts
+                                                with the letter{" "}
+                                                <span
+                                                    style={{
+                                                        fontWeight: "600",
+                                                    }}
+                                                >
+                                                    {letter}
+                                                </span>
+                                                ?
+                                            </p>
+                                            <input
+                                                type="text"
+                                                name="userFound"
+                                            />
+                                            <input
+                                                type="hidden"
+                                                value={letter}
+                                                name="letter"
+                                            />
+                                        </label>
+                                        <button type="submit">Submit</button>
+                                    </Form>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
             </div>
         </>
     );

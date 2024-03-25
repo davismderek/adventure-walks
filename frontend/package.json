@@ -19,6 +19,7 @@
     "@fortawesome/free-regular-svg-icons": "^6.5.1",
     "@fortawesome/free-solid-svg-icons": "^6.5.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
+    "@lottiefiles/react-lottie-player": "^3.5.3",
     "@supabase/supabase-js": "^2.39.8",
     "framer-motion": "^11.0.12",
     "lottie-react": "^2.4.0",

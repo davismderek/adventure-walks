@@ -58,12 +58,12 @@ def get_email():
 
 @app.get('/letterinput/getLetterFound')
 def get_letterFound():
-    response = supabase.table('abcs').select('userFound', 'letter').execute()
+    response = supabase.table('abcs').select('userFound', 'letter').order('created_at', desc=True).execute()
     return response
 
 @app.get('/colors/getColorFound')
 def get_colorFound():
-    response = supabase.table('colors').select('userFound', 'color').execute()
+    response = supabase.table('colors').select('userFound', 'color').order('created_at', desc=True).execute()
     return response
 
 
