@@ -2,12 +2,8 @@
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse, faUser } from "@fortawesome/free-solid-svg-icons";
-// import { faUser } from "@fortawesome/free-solid-svg-icons";
-
-// const element = <FontAwesomeIcon icon={faHouse} />;
 
 import { Link, useLocation } from "react-router-dom";
-// import UserHome from "../routes/UserHome";
 const Navigation = () => {
     const location = useLocation();
 
@@ -28,7 +24,4 @@ const Navigation = () => {
     );
 };
 
-// Navigation.propTypes = {
-//     navItems: PropTypes.array,
-// };
 export default Navigation;

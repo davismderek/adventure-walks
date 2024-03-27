@@ -3,10 +3,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPersonHiking } from "@fortawesome/free-solid-svg-icons";
 import bg1 from "../assets/bg1.png";
 
-// import url from "https://fonts.googleapis.com/css2?family=Walter+Turncoat&display=swap";
-
-// import { faPersonWalking } from "@fortawesome/free-solid-svg-icons";
-
 const UserHome = () => {
     return (
         <>
@@ -75,13 +71,3 @@ const UserHome = () => {
 };
 
 export default UserHome;
-
-/* <h2 className="homeHeaders">Play Bingo!</h2>
-                <div className="homeCardContainer">
-                    <div className="homeCard">
-                        <p>SEEING</p>
-                    </div>
-                    <div className="homeCard">
-                        <p>HEARING</p>
-                    </div>
-                </div> */

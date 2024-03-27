@@ -2,7 +2,8 @@ import { Navigate, useLoaderData } from "react-router-dom";
 import { useAuth } from "../AuthContext";
 
 export const loader = async () => {
-    const url = "http://localhost:8000/logout/";
+    const url =
+        "https://main-bvxea6i-ac7ykssdjltkk.us-4.platformsh.site/logout/";
     const access_token = localStorage.getItem("access_token");
 
     const response = await fetch(url, {
