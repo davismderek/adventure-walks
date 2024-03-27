@@ -5,10 +5,10 @@ import os
 
 load_dotenv()
 
-api_url: str = os.getenv("url")
+# api_url: str = os.getenv("url")
+api_url: str = 'https://ivrkttlvgtjqrxppnrvt.supabase.co'
 key: str = os.getenv("api")
 
-print(api_url)
 
 def create_supabase_client():
     supabase: Client = create_client(api_url, key)
