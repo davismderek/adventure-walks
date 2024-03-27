@@ -7,7 +7,7 @@ import ProtectedLayout from "../pages/ProtectedLayout";
 import UserHome from "./UserHome";
 import Letters from "./ABCs";
 import Colors from "./Colors";
-import Animals from "./Animals";
+import Plants from "./Plants";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Logout, { loader as logoutLoader } from "./Logout";
 import Account, { loader as accountLoader } from "./Account";
@@ -60,8 +60,8 @@ const Routes = () => {
                     element: <Colors />,
                 },
                 {
-                    path: "/animals",
-                    element: <Animals />,
+                    path: "/plants",
+                    element: <Plants />,
                 },
                 {
                     path: "/numbers",

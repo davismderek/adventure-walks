@@ -21,34 +21,46 @@ const UserHome = () => {
                 }}
             >
                 <div className="userHome">
-                    <h1 className="walter-turncoat-regular">
-                        Hello, Adventurer!<span> </span>
+                    <h1
+                        className="chelsea-market-regular"
+                        style={{ color: "white" }}
+                    >
+                        Hello, Adventurer<span> </span>
                         <FontAwesomeIcon icon={faPersonHiking} />
                         <span> </span>
                         {/* <FontAwesomeIcon icon={faPersonWalking} /> */}
                     </h1>
                     <div className="homeBtnSection">
                         <div className="homeHeaders">
-                            <h2>Scavenger Hunt!</h2>
+                            <h2 className="chelsea-market-regular">
+                                Scavenger Hunt
+                            </h2>
                             <div className="homeCardContainer">
                                 <Link to="/colors" className="homeCard">
-                                    <p>COLORS</p>
+                                    <p className="chelsea-market-regular">
+                                        COLORS
+                                    </p>
                                 </Link>
-                                <Link to="/numbers" className="homeCard">
-                                    <p>123's</p>
+                                <Link to="/abc" className="homeCard">
+                                    <p className="chelsea-market-regular">
+                                        ABC's
+                                    </p>
                                 </Link>
                             </div>
                         </div>
 
                         <div className="homeHeaders">
-                            <h2>Learning!</h2>
+                            <h2 className="chelsea-market-regular">Learning</h2>
                             <div className="homeCardContainer">
-                                <Link to="/abc" className="homeCard">
-                                    <p>ABC's</p>
+                                <Link to="/numbers" className="homeCard">
+                                    <p className="chelsea-market-regular">
+                                        123's
+                                    </p>
                                 </Link>
-
-                                <Link to="/animals" className="homeCard">
-                                    <p>ANIMALS</p>
+                                <Link to="/plants" className="homeCard">
+                                    <p className="chelsea-market-regular">
+                                        PLANTS
+                                    </p>
                                 </Link>
                             </div>
                         </div>

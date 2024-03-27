@@ -1,7 +1,7 @@
 import { Form } from "react-router-dom";
 import React, { useEffect, useState, useRef } from "react";
-import Lottie from "lottie-react";
-import { Player, Controls } from "@lottiefiles/react-lottie-player";
+// import Lottie from "lottie-react";
+// import { Player, Controls } from "@lottiefiles/react-lottie-player";
 import Animation from "../components/Animation";
 import bg2 from "../assets/bg2.png";
 
@@ -142,12 +142,11 @@ const Colors = () => {
                     backgroundImage: `url(${bg2})`,
                 }}
             >
-                <h1 className="colorH1">Colors </h1>
+                <h1 className="colorH1 chelsea-market-regular">Colors </h1>
                 <div className="introText">
                     <p>
-                        On today's adventure, we're hunting for colors! Tell us
-                        what you can found that matches the color and then look
-                        for the checkmark. ✓
+                        Let's hunt for some colors! Tell us what you found that
+                        matches the color and then look for the check mark. ✓
                     </p>
                 </div>
 
@@ -210,6 +209,9 @@ const Colors = () => {
                                             <input
                                                 type="text"
                                                 name="userFound"
+                                                onClick={(e) =>
+                                                    e.stopPropagation()
+                                                }
                                             />
                                             <input
                                                 type="hidden"

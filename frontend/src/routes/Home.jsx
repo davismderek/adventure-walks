@@ -1,7 +1,57 @@
+import { Link } from "react-router-dom";
+import bg2 from "../assets/bg2.png";
+
 const Home = () => {
     return (
         <>
-            <h1>Hello World</h1>
+            <div
+                className="bgs"
+                style={{
+                    backgroundImage: `url(${bg2})`,
+                }}
+            >
+                <h1>Adventure Walks</h1>
+                <div className="accountPage">
+                    <p>
+                        In an effort to get kids outside, this app was created
+                        to capture children’s interest and have them engage in
+                        nature. Adventure Walks incorporates color exploration,
+                        letter association, fun facts tailored to kids about
+                        what they see in their own neighborhood, and it uses AI
+                        to partner with one of the largest biodiversity
+                        observatories in the world to identify plants species.
+                        The mission behind Adventure Walks is to foster an
+                        environment for learning while creating excitement about
+                        getting kids outside.
+                    </p>
+                    <p>
+                        If you already have an account,{" "}
+                        <Link
+                            style={{
+                                textDecoration: "underline",
+                                fontWeight: "600",
+                                color: "darkgreen",
+                            }}
+                            to="/login"
+                        >
+                            click here
+                        </Link>{" "}
+                        to login. If you need to create an account,{" "}
+                        <Link
+                            style={{
+                                textDecoration: "underline",
+                                fontWeight: "600",
+                                color: "darkgreen",
+                            }}
+                            to="/register"
+                        >
+                            {" "}
+                            click here
+                        </Link>{" "}
+                        .
+                    </p>
+                </div>
+            </div>
         </>
     );
 };

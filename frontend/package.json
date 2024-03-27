@@ -21,6 +21,7 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@lottiefiles/react-lottie-player": "^3.5.3",
     "@supabase/supabase-js": "^2.39.8",
+    "ai-taxonomist": "^0.7.0",
     "framer-motion": "^11.0.12",
     "lottie-react": "^2.4.0",
     "react": "^18.2.0",

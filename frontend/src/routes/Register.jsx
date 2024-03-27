@@ -1,6 +1,7 @@
 import { Form, Navigate, useActionData, Link } from "react-router-dom";
 import { useAuth } from "../AuthContext";
 import { useEffect } from "react";
+import bg2 from "../assets/bg2.png";
 
 export async function action({ request }) {
     const formData = await request.formData();
@@ -42,23 +43,43 @@ const Register = () => {
         setIsAuth(response);
     }, [response, setIsAuth]);
     return !isAuth ? (
-        <Form method="POST">
-            <h1>Create Account</h1>
+        <div
+            className="bgs"
+            style={{
+                backgroundImage: `url(${bg2})`,
+            }}
+        >
+            <h1>Adventure Walks</h1>
 
-            <label>
-                Enter Email Address
-                <input type="text" name="email" />
-            </label>
-            <label>
-                Create a Password
-                <input type="password" name="password" />
-            </label>
-            <button type="submit">Submit</button>
-            <p>
-                If you already have an account,
-                <Link to="/login"> click here</Link> to login.
-            </p>
-        </Form>
+            <div className="accountPage">
+                <Form className="loginForm" method="POST">
+                    <h2>Create Account</h2>
+                    <label>
+                        Enter Email Address:
+                        <input type="text" name="email" />
+                    </label>
+                    <label>
+                        Create a Password:
+                        <input type="password" name="password" />
+                    </label>
+                    <button type="submit">Submit</button>
+                    <p>
+                        If you already have an account,
+                        <Link
+                            style={{
+                                textDecoration: "underline",
+                                color: "darkgreen",
+                            }}
+                            to="/login"
+                        >
+                            {" "}
+                            click here
+                        </Link>{" "}
+                        to login.
+                    </p>
+                </Form>
+            </div>
+        </div>
     ) : (
         <Navigate to="/userhome" />
     );

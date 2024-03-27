@@ -1,6 +1,7 @@
 import { Form, Link, useActionData, Navigate } from "react-router-dom";
 import { useAuth } from "../AuthContext";
 import { useEffect } from "react";
+import bg2 from "../assets/bg2.png";
 
 export const action = async ({ request }) => {
     const formData = await request.formData();
@@ -41,30 +42,47 @@ export const action = async ({ request }) => {
 const Login = () => {
     const { isAuth, setIsAuth } = useAuth();
     const response = useActionData();
-    
 
     useEffect(() => {
         setIsAuth(response);
     }, [response, setIsAuth]);
     return !isAuth ? (
         <>
-            <h1>Login</h1>
-            <div>
-                <Form className="loginForm" method="POST">
-                    <label>
-                        Enter Account Email:
-                        <input type="text" name="email" />
-                    </label>
-                    <label>
-                        Enter Account Password:
-                        <input type="password" name="password" />
-                    </label>
-                    <button type="submit">Submit</button>
-                    <p>
-                        If you need to create an account,
-                        <Link to="/register"> click here.</Link>
-                    </p>
-                </Form>
+            <div
+                className="bgs"
+                style={{
+                    backgroundImage: `url(${bg2})`,
+                }}
+            >
+                <h1>Adventure Walks </h1>
+                <div className="accountPage">
+                    <Form className="loginForm" method="POST">
+                        <h2>Login</h2>
+                        <label>
+                            Enter Account Email:
+                            <input type="text" name="email" />
+                        </label>
+                        <label>
+                            Enter Account Password:
+                            <input type="password" name="password" />
+                        </label>
+                        <button type="submit">Submit</button>
+                        <p>
+                            If you need to create an account,
+                            <Link
+                                to="/register"
+                                style={{
+                                    textDecoration: "underline",
+                                    color: "darkgreen",
+                                }}
+                            >
+                                {" "}
+                                click here
+                            </Link>{" "}
+                            to register.
+                        </p>
+                    </Form>
+                </div>
             </div>
         </>
     ) : (

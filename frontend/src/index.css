@@ -15,11 +15,13 @@
 
 a {
     font-weight: 500;
-    color: #646cff;
+    color: white;
     text-decoration: inherit;
 }
 a:hover {
-    color: #535bf2;
+    color: rgb(1, 1, 1);
+    /* color: coral; */
+    /* background-color: #fff; */
 }
 
 body {
@@ -35,10 +37,20 @@ h1 {
     line-height: 1.1;
     margin: 40px 15px 10px;
     text-align: center;
+    font-family: futura;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: rgb(90, 89, 89);
+    color: coral;
 }
 
 .walter-turncoat-regular {
     font-family: "Walter Turncoat", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.chelsea-market-regular {
+    font-family: "Chelsea Market", system-ui;
     font-weight: 400;
     font-style: normal;
 }
@@ -48,7 +60,7 @@ h1 {
     flex-wrap: wrap;
     align-content: stretch;
     justify-content: center;
-    gap: 200px;
+    gap: 111px;
 }
 
 .bgs {
@@ -60,6 +72,7 @@ h1 {
     background-repeat: no-repeat;
     background-attachment: fixed;
     min-height: 100vh;
+    align-items: center;
 }
 
 .h1,
@@ -69,9 +82,9 @@ h1 {
     font-size: 0.8em;
 }
 
-hr {
+/* hr {
     margin: 0px 15px 0px;
-}
+} */
 .introText {
     /* margin: 10px; */
     margin: 0px 15px 0px;
@@ -80,13 +93,42 @@ hr {
     /* background-color: #60a43fc2; */
     background-color: #58bad6c2;
     border-radius: 34px;
-    padding-left: 15px;
+    padding: 0px 10px 0px 15px;
+    /* padding-left: 15px; */
+}
+
+.apiContainer {
+    font-family: futura;
+    max-width: 85%;
+    background-color: #080808cc;
+    border-radius: 34px;
+    display: block;
+    margin-top: 20px;
+    overflow: auto;
+    padding: 10px;
+}
+
+.accountPage {
+    display: flex;
+    background-color: #ffffff52;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: futura;
+    font-size: 18px;
+    font-weight: 500;
+    color: darkgreen;
+    /* padding: 30px; */
+    padding: 20px 30px 20px 30px;
+    margin: 20px;
+    border-radius: 20px;
 }
 
 .loginForm {
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: center;
+    gap: 5px;
 }
 
 input {
@@ -112,6 +154,7 @@ button {
     background-color: #1a1a1a;
     cursor: pointer;
     transition: border-color 0.25s;
+    color: white;
 }
 button:hover {
     border-color: #646cff;
@@ -140,6 +183,9 @@ button:focus-visible {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+
+    /* padding-bottom: 20px; */
 }
 
 h2,
@@ -167,14 +213,16 @@ h2,
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     display: inline-block;
+    -webkit-text-stroke-width: initial; /* Resetting the stroke width */
+    -webkit-text-stroke-color: initial;
 }
 
-.dogImg {
+/* .dogImg {
     width: 300px;
     height: auto;
     border: 1px;
     border-radius: 20px;
-}
+} */
 .animalCardsContainer {
     display: flex;
     flex-wrap: wrap;
@@ -190,12 +238,13 @@ h2,
     position: relative;
 }
 
-.flip-container:nth-child(even) .card .back {
+.flip-container:nth-child(even) .card .backABC {
     left: 50%;
 }
 
 .homeCardContainer {
     display: flex;
+    padding-bottom: 20px;
 }
 
 .homeBtnSection {
@@ -262,6 +311,14 @@ Form {
     backface-visibility: hidden;
 }
 
+.front,
+.backABC {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+}
+
 .front {
     background-color: #3498db;
     color: white;
@@ -271,8 +328,28 @@ Form {
     align-items: center;
     font-family: futura;
     font-size: 64px;
+    border: white solid 4px;
+    border-radius: 40px;
+    box-shadow: 0 5px 6px rgba(0, 0, 0, 0.2);
+}
+
+.backABC {
+    /* background-color: #2ecc71; */
+    background-color: darkgreen;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotateY(180deg);
     border: white solid 5px;
     border-radius: 40px;
+    font-family: futura;
+    font-size: 25px;
+    left: -5%;
+    box-shadow: 0 5px 6px rgba(0, 0, 0, 0.2);
+
+    /* margin: 5px; */
+    /* padding: 10px; */
 }
 
 .back {
@@ -286,7 +363,8 @@ Form {
     border-radius: 40px;
     font-family: futura;
     font-size: 20px;
-    left: -23%;
+    box-shadow: 0 5px 6px rgba(0, 0, 0, 0.2);
+    /* left: -23%; */
     /* margin: 5px; */
     /* padding: 10px; */
 }
@@ -298,6 +376,10 @@ Form {
     margin: 10px 0;
     position: absolute;
     z-index: 10;
+}
+
+.abcBody {
+    overflow-x: clip;
 }
 
 /* Clear fix for the parent container */
@@ -314,15 +396,22 @@ Form {
     justify-content: center;
 }
 
+span .familyName {
+    /* max-width: 140px !important; */
+    display: inline-block !important;
+    /* display: none; */
+}
+
 .flip-container-numbers {
     width: 325px;
-    height: 220px;
+    height: 250px;
     /* margin: 10px; */
     /* perspective: 1000px; */
     /* display: inline-block; */
     display: flex;
     /* position: relative; */
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
+    margin: 10px 0px 10px 0px;
 }
 
 .cardNumbers {
@@ -340,11 +429,12 @@ Form {
     display: flex;
     /* justify-content: center; */
     justify-content: space-evenly;
-    border: white solid 5px;
+    border: white solid 4px;
     border-radius: 50px;
     font-size: 80px;
     align-items: center;
     align-content: center;
+    box-shadow: 0 5px 6px rgba(0, 0, 0, 0.2);
 }
 
 .numFrontIcon {
@@ -374,6 +464,7 @@ p.numFrontIcon {
     background-color: darkgreen;
     color: white;
     font-family: futura;
+    box-shadow: 0 5px 6px rgba(0, 0, 0, 0.2);
     /* padding-left: 20px; */
     /* padding-left: 15px; */
     /* display: flex;
@@ -396,7 +487,7 @@ p.numFrontIcon {
 .numBackText {
     padding: 10px 15px 0px 15px;
     font-size: 22px;
-    line-height: 1;
+    line-height: 1.1;
 }
 
 .flip-container-numbers.flippedA .frontNumbers {
