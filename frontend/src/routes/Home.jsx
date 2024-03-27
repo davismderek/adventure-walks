@@ -24,7 +24,15 @@ const Home = () => {
                         environment for learning while creating excitement about
                         getting kids outside.
                     </p>
-                    <p>
+                    <div className="homeCardContainer">
+                        <Link to="/login" className="homeCard">
+                            <p>LOGIN</p>
+                        </Link>
+                        <Link to="/register" className="homeCard">
+                            <p>REGISTER</p>
+                        </Link>
+                    </div>
+                    {/* <p>
                         If you already have an account,{" "}
                         <Link
                             style={{
@@ -49,7 +57,7 @@ const Home = () => {
                             click here
                         </Link>{" "}
                         .
-                    </p>
+                    </p> */}
                 </div>
             </div>
         </>

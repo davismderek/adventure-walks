@@ -25,9 +25,11 @@ export async function action({ request }) {
 
         // const { access_token } = data;
         const access_token = data.session.access_token;
+        const user_id = data.user.id;
 
         localStorage.clear();
         localStorage.setItem("access_token", access_token);
+        localStorage.setItem("user_id", user_id);
         return statusCode === 200 ? true : false;
     } catch (error) {
         console.log("ERROR:", error);
