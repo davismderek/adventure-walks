@@ -7,10 +7,10 @@ name: app
 # in multiple versions. Check the Python documentation
 # (https://docs.platform.sh/languages/python.html#supported-versions)
 # to find the supported versions for the 'python' type.
-type: "python:3.12"
-dependencies:
-    python3:
-        pipenv: "*"
+type: "python:3.9"
+# dependencies:
+#     python3:
+#         pipenv: "*"
 
 # The following block defines a single writable directory, 'web/uploads'
 # The 'source' specifies where the writable mount is. The 'local' source
@@ -27,7 +27,7 @@ disk: 2048
 
 hooks:
     build: |
-        pipenv install --system --deploy
+        pip install -r requirements.txt
 
 web:
     commands:
