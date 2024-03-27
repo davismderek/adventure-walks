@@ -10,7 +10,8 @@ const Letters = () => {
 
     const fetchData = async () => {
         try {
-            const url = "http://localhost:8000/letterinput/getLetterFound";
+            const url =
+                "https://main-bvxea6i-ac7ykssdjltkk.us-4.platformsh.site/letterinput/getLetterFound";
             const access_token = localStorage.getItem("access_token");
 
             const response = await fetch(url, {

@@ -19,19 +19,11 @@ import {
 const NumbersCard = ({ number, fact, icon, iconName }) => {
     const [flipped, setFlipped] = useState(false);
 
-    // const handleClick = () => {
-    //     setFlipped(!flipped);
-    // };
-
     const handleClick = (number) => {
         setFlipped(flipped === number ? null : number);
     };
 
     return (
-        // <div
-        //     className={`flip-container-numbers ${flipped ? "flippedA" : ""}`}
-        //     onClick={handleClick}
-        // >
         <div
             className={`flip-container-numbers ${
                 flipped === number ? "flippedA" : ""
@@ -144,6 +136,9 @@ const Numbers = () => {
                         iconName="Trees"
                         fact="Trees have a special drink called sap that flows through them like yummy juice! It's like their very own energy drink to help them grow big and tall! 🌳 🥤"
                     />
+                </div>
+                <div className="scavengerImgContainer">
+                    <img src="/src/assets/Scav.png" className="scavengerImg" />
                 </div>
             </div>
         </>
