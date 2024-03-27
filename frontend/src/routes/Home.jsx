@@ -32,32 +32,6 @@ const Home = () => {
                             <p>REGISTER</p>
                         </Link>
                     </div>
-                    {/* <p>
-                        If you already have an account,{" "}
-                        <Link
-                            style={{
-                                textDecoration: "underline",
-                                fontWeight: "600",
-                                color: "darkgreen",
-                            }}
-                            to="/login"
-                        >
-                            click here
-                        </Link>{" "}
-                        to login. If you need to create an account,{" "}
-                        <Link
-                            style={{
-                                textDecoration: "underline",
-                                fontWeight: "600",
-                                color: "darkgreen",
-                            }}
-                            to="/register"
-                        >
-                            {" "}
-                            click here
-                        </Link>{" "}
-                        .
-                    </p> */}
                 </div>
             </div>
         </>
