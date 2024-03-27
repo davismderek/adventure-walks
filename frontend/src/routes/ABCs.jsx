@@ -404,6 +404,12 @@ const Letters = () => {
                             </div>
                         </div>
                     ))}
+                    <div className="scavengerImgContainer">
+                        <img
+                            src="/src/assets/Scav.png"
+                            className="scavengerImg"
+                        />
+                    </div>
                 </div>
             </div>
         </>

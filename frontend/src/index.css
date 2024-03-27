@@ -382,6 +382,14 @@ Form {
     overflow-x: clip;
 }
 
+.scavengerImgContainer {
+    max-width: 100%;
+}
+
+.scavengerImg {
+    max-width: 100%;
+}
+
 /* Clear fix for the parent container */
 .abcBody::after {
     content: "";

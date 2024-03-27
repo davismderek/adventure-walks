@@ -230,6 +230,12 @@ const Colors = () => {
                             </div>
                         </div>
                     ))}
+                    <div className="scavengerImgContainer">
+                        <img
+                            src="/src/assets/Scav.png"
+                            className="scavengerImg"
+                        />
+                    </div>
                 </div>
             </div>
         </>
