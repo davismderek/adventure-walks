@@ -1,13 +1,9 @@
-from typing import Union
-from dotenv import load_dotenv
-from uuid import uuid4
+
 # from fastapi.security import OAuth2PasswordBearer
 from fastapi.middleware.cors import CORSMiddleware
-import bcrypt
-from fastapi import FastAPI, HTTPException, Request
+from fastapi import FastAPI, HTTPException
 from models import User, Abcs, Colors
 from db.supabase import create_supabase_client
-import requests
 
 app = FastAPI()
 
