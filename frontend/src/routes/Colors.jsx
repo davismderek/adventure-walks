@@ -4,6 +4,7 @@ import React, { useEffect, useState, useRef } from "react";
 // import { Player, Controls } from "@lottiefiles/react-lottie-player";
 import Animation from "../components/Animation";
 import bg2 from "../assets/bg2.png";
+import Scav from "../assets/Scav.png";
 
 const Colors = () => {
     const [colorFound, setColorFound] = useState({ data: [] });
@@ -231,12 +232,13 @@ const Colors = () => {
                             </div>
                         </div>
                     ))}
-                    <div className="scavengerImgContainer">
-                        <img
-                            src="/src/assets/Scav.png"
-                            className="scavengerImg"
-                        />
-                    </div>
+
+                    <div
+                        className="scavengerImgContainer"
+                        style={{
+                            img: `url(${Scav})`,
+                        }}
+                    ></div>
                 </div>
             </div>
         </>
