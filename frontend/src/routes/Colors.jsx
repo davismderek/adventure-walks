@@ -236,7 +236,7 @@ const Colors = () => {
                     <div
                         className="scavengerImgContainer"
                         style={{
-                            img: `url(${Scav})`,
+                            backgroundImg: `url(${Scav})`,
                         }}
                     ></div>
                 </div>
