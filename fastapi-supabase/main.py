@@ -10,6 +10,8 @@ app = FastAPI()
 origins = [
     "http://localhost",
     "http://localhost:5173",
+    "https://adventure-walks.netlify.app",
+
 
 ]
 
