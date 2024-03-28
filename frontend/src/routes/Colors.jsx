@@ -236,9 +236,11 @@ const Colors = () => {
                     <div
                         className="scavengerImgContainer"
                         style={{
-                            backgroundImage: `url(${Scav})`,
+                            image: `url(${Scav})`,
                         }}
-                    ></div>
+                    >
+                        <img src={`url(${Scav})`} />
+                    </div>
                 </div>
             </div>
         </>
